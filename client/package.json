@@ -1,5 +1,5 @@
 {
-  "name": "typescript-template",
+  "name": "monitor-client",
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
@@ -8,8 +8,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "typescript": "^5.8.2"
-  }
+  },
+  "description": ""
 }
