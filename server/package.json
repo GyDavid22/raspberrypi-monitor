@@ -1,5 +1,5 @@
 {
-  "name": "typescript-template",
+  "name": "monitor-server",
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
@@ -8,8 +8,13 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "typescript": "^5.8.2"
-  }
+    "typescript": "^5.8.2",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "description": ""
 }

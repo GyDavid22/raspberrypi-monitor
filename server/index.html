@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Status</title>
+</head>
+
+<body>
+    <p id="text"></p>
+    <script>
+        (async () => {
+            const res = await fetch('/date', { method: 'GET' });
+            if (res.status === 200) {
+                const date = new Date(Date.parse(await res.text()));
+                const diff = Math.round((new Date().getTime() - date.getTime()) / 1000 / 60);
+                document.getElementById('text').textContent = `Last seen ${diff} minute(s) ago, at ${date.toLocaleString()}`;
+            } else if (res.status === 404) {
+                document.getElementById('text').textContent = `Probably offline, seen >15 minutes ago`;
+            }
+        })();
+    </script>
+</body>
+
+</html>
