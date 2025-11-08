@@ -1,1 +1,1 @@
-Personal tool for monitoring my Raspberry Pi if it's online or not.
+Personal minitool for monitoring my Raspberry Pi if it's online or not.
