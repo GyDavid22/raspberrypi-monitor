@@ -8,6 +8,7 @@
 
 <body>
     <p id="text"></p>
+    {{statusMessage}}
     <script>
         (async () => {
             const res = await fetch('/date', { method: 'GET' });
