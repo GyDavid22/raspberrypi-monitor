@@ -40,6 +40,9 @@ app.get('/', (_req, res) => {
     let html = fs.readFileSync('index.html', 'utf8');
     if (statusMessage) {
         html = html.replace('{{statusMessage}}', statusMessage);
+        const escaped = document.createElement('div');
+        escaped.innerText = html;
+        html = escaped.innerHTML;
     } else {
         html = html.replace('{{statusMessage}}', '');
     }
