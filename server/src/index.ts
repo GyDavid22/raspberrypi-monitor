@@ -1,5 +1,6 @@
 import express from 'express';
 import * as fs from 'fs';
+import he from 'he';
 
 let lastDate: string | undefined;
 let statusMessage: string | undefined;
@@ -39,10 +40,7 @@ app.get('/date', (_req, res) => {
 app.get('/', (_req, res) => {
     let html = fs.readFileSync('index.html', 'utf8');
     if (statusMessage) {
-        html = html.replace('{{statusMessage}}', statusMessage);
-        const escaped = document.createElement('div');
-        escaped.innerText = html;
-        html = escaped.innerHTML;
+        html = html.replace('{{statusMessage}}', he.escape(statusMessage));
     } else {
         html = html.replace('{{statusMessage}}', '');
     }
