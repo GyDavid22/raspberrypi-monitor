@@ -29,18 +29,10 @@ app.post('/ping', express.text({ type: '*/*' }), (req, res) => {
     res.sendStatus(200);
 });
 
-app.get('/date', (_req, res) => {
-    if (lastDate) {
-        res.type('text/plain').status(200).send(lastDate);
-    } else {
-        res.status(404).send();
-    }
-});
-
 app.get('/', (_req, res) => {
     const html = fs.readFileSync('index.hbs', 'utf8');
     const compiled = Handlebars.compile(html);
-    const result = compiled({ statusMessage });
+    const result = compiled({ statusMessage, lastDate });
     res.type('html').status(200).send(result);
 });
 
