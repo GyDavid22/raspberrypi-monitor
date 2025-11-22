@@ -8,7 +8,9 @@
 
 <body>
     <p id="text"></p>
-    {{statusMessage}}
+    {{#if statusMessage}}
+    <p>{{statusMessage}}</p>
+    {{/if}}
     <script>
         (async () => {
             const res = await fetch('/date', { method: 'GET' });

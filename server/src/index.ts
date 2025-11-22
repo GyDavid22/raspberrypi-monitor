@@ -1,6 +1,6 @@
 import express from 'express';
 import * as fs from 'fs';
-import he from 'he';
+import Handlebars from 'handlebars';
 
 let lastDate: string | undefined;
 let statusMessage: string | undefined;
@@ -38,13 +38,10 @@ app.get('/date', (_req, res) => {
 });
 
 app.get('/', (_req, res) => {
-    let html = fs.readFileSync('index.html', 'utf8');
-    if (statusMessage) {
-        html = html.replace('{{statusMessage}}', he.escape(statusMessage));
-    } else {
-        html = html.replace('{{statusMessage}}', '');
-    }
-    res.type('html').status(200).send(html);
+    const html = fs.readFileSync('index.hbs', 'utf8');
+    const compiled = Handlebars.compile(html);
+    const result = compiled({ statusMessage });
+    res.type('html').status(200).send(result);
 });
 
 app.listen(10000);
